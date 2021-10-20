@@ -1,10 +1,17 @@
 import React, { useRef, useState } from 'react'
 import './VideoComponent.css'
-import { tiktokVideo } from '../../assets'
 import VideoFooter from '../VideoFooter/VideoFooter'
 import VideoSidebar from '../VideoSidebar/VideoSidebar'
 
-const VideoComponent = () => {
+const VideoComponent = ({
+   video,
+   song,
+   channel,
+   description,
+   likeCount,
+   shareCount,
+   messageCount,
+}) => {
    const videoRef = useRef(null)
 
    const handleVideoPress = () => {
@@ -20,10 +27,14 @@ const VideoComponent = () => {
             ref={videoRef}
             loop
             muted
-            src={tiktokVideo}
+            src={video}
          />
-         <VideoFooter />
-         <VideoSidebar />
+         <VideoFooter song={song} channel={channel} description={description} />
+         <VideoSidebar
+            likeCount={likeCount}
+            shareCount={shareCount}
+            messageCount={messageCount}
+         />
       </div>
    )
 }
